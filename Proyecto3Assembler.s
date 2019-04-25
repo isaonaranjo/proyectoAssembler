@@ -15,6 +15,10 @@ main:
 	ldr r6, =letras
 
 ingreso:
+    @ASCII Art
+    ldr r0,=dibujo
+    bl puts
+
     ldr r0, =mensaje_bienvenida
     bl puts
 	ldr r0, =mensaje_ingreso
@@ -82,7 +86,7 @@ fin:
 .data
 .align 2  
 mensaje_bienvenida:
-            .asciz "Bienvenido. Debes destruir las palabras completándolas.  Selecciona el ordendelapalabra seguido de sus caracteres faltantes: 1ER. \n"
+            .asciz "Bienvenido. Debes destruir las palabras completándolas.  Selecciona el orden de la palabra seguido de sus caracteres faltantes: 1ER. \n"
 mensaje_ingreso:
 			.asciz "Listo para jugar?(S/N): "
 opcion:
@@ -109,3 +113,6 @@ letra:
 	.byte 0
 adivina: 
 	.asciz "(%d) %s "
+
+dibujo:
+    .asciz "....................                          .. . . .           .\n..... ..............               .           .   . .           .         .\n..... .  ................ . .. ... ..... ......... . .         ... . .. .... . .\n.....    .   .. ..   .  .        . .\n.....                   .          . =MMNNMM.. .       . .. ..   ..        .  .\n.....                .             .NM.    ~M            .. ..             .\n.           . .   . ........... . M, .....M ..................................\n..  . .  .  ............... ,M8 ..+MZ..  .. ............... .. ...  ....\n.  . .  .      .    .. .   . .MMM= ... ................................\n.                 .. ... ...... . .  OIM .... ................................\n.  .................. O~M..... ................................\n.     .     .  .  .. ........ . . ..:M7MMMMM$~:. .............................\n.  .  ............            ZMMMZ ...    .. ..?MMM7. .....\n....................      . ZMM+ +MMM.       .. ... . .$MM, .. .. .     .      .\n... . . ........... . ..$MM...? +MM.           .Z:..   . $MM.                 .\n.....   ..  . .  .    .NM . ... ..MM     ..   . .$M....~OOO .MM.. .     .      .\n...... . ........... MM... $8+    M8.  .MMI, IM  ....MM....M  :M  . .. ... ..  .\n.......... .......MM. ~M,   .M?.   ...M.    ..M   .N..  .. M  .MD.     .    . .\n................ ,M,. $=.    . M.  . .M ..... .M~ ..M  ....?M... MM  .. ........\n.     ..  . . OM . .M.      .M.     M      .+M.    MM?.?MM..  ..MM.\n.....   .....  MM ... M:. ..  M=.   . .MMMOMMMZ      ...,..   .. IMMMMM ..     .\n. ..........M=. .  . NM$ZMMM.  .    .        .   . .. ~OMMMMMM+..    MM.     .\n.    . .. .M .   .    .   ...       .. . :7MMMMMMMMMZ~ ..... .      .MMM.    .\n....     .. M.           ,,IMMMMMMMMMMMNZ=..        .    ..... .  ~MMM7.\n.... . . MMD$.                 .    .   .  .        . .  .. .IMMMM= M,...\n.   .MM     .  .            .               .   ... =MMMMM?...DM?MD   .      .\n.  8MM~   ........ .  .    .. .          .?DMMMMMM7, . :MM.   ZMMMI   .      .\n.    . MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM$:    . ....... ::  :. $M+MM...........\n.      .+MMMMMMI+,,.          .       ..    .  . .. ... .  OIMMZM~N.. .  . . .\n. ......  IM$+7??,.. + .   .. .       . .  ..     . .. ...ZMM~M:MM.   .  .  ..\n.. .. ..  ...$MN:. ...~ .  .. .        .    .     . ...=MMMMM?+NO     .  . . .\n.            MMM,IMMM7   . .. .             . ... ~OMMM? .  DM+ ..    .      .\n.  . ...  . . MM,7MMMO,MMMMNM$::      .,:$$MMMMMMI    ...... .. . ......... ..\n.     ..  . . ..OMMMZI$M ......:~I7$$$M7??7OMM8IZO............................\n..              ..   ...               OMMDD8MMMM?.. ........ .. .     .\n.  ...............                    ..   .  .  .. .  ..... .. ..  . . .... .\n.         . .  .   .  .     .         .         . . ........... .    .      ..\n....    ..  ...  .   .                  ............................ .. ... ....\n.     ..    .  .      .     .         ............................... ........"
