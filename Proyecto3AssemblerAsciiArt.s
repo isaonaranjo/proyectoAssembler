@@ -8,11 +8,13 @@
 .global main
 .type main,%function
 
-main: 
 main:
 	stmfd sp!, {lr}	/* SP = R13 link register */
 
 ingreso:
+    mov r8,#5 @Contador buenas
+    mov r7,#3 @Contador malas
+
     @ASCII Art
     ldr r0,=nave
     bl puts
@@ -76,14 +78,26 @@ juego:
 	@ incorrecto 
 	ldr r0, =mensaje_noigual
 	bl puts
-	b inicio
+
+    subs r7,r7,#1
+    bne inicio
+    ldr r0,=perdedor
+    bl puts
+    b fin
+
+
 
 correcto:
 	ldr r0, =mensaje_igual
 	bl puts
 	mov r0,r10 @posicion de la palabra en el arreglo palabras
-	bl borrarPalabra 
-	b inicio
+	bl borrarPalabra
+
+    subs r8,r8,#1
+    bne inicio
+    ldr r0,=ganador
+    bl puts
+    b fin
 
 fin: 
     ldr r0, =mensaje_final
@@ -110,12 +124,21 @@ borrar:
 	strb r3, [r1],#1 @ se borra la palabra correcta 
 	subs r2, #1 
 	bne borrar
-	pop {pc} 
+	pop {pc}
+
 
 
 
 .data
-.align 2  
+.align 2
+
+formatoN:
+    .asciz "%d"
+ganador:
+    .asciz "GANASTE!"
+
+perdedor:
+    .asciz "LO SIENTO... PERDISTE..."
 mensaje_bienvenida:
         .asciz "Bienvenido. Debes destruir las palabras completándolas.  Selecciona el orden de la palabra seguido de sus caracteres faltantes: 1ER. \n"
 mensaje_ingreso:
